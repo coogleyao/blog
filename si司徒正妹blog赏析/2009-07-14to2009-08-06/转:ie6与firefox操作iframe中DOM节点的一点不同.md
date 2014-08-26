@@ -11,16 +11,18 @@
   </body>
 </html>
 <script type="text/javascript">
-  var doc = document.getElementById('myiframe').contentWindow.document;
-  var textNode = document.createTextNode('yes~');
-  doc.open();
-  doc.write('<html><body></body></html>');
-  doc.close();
-  doc.body.appendChild(textNode);
+  ```javadcript
+    var doc = document.getElementById('myiframe').contentWindow.document;
+    var textNode = document.createTextNode('yes~');
+    doc.open();
+    doc.write('<html><body></body></html>');
+    doc.close();
+    doc.body.appendChild(textNode);
+  ```
 </script>
 ```
 
-```javascript
+```
 <html>
 	<body>
 		<iframe id="myiframe"></iframe>
@@ -36,7 +38,7 @@
 </script>
 ```
 
-```javascript
+```
 <html>
 	<body>
 		<iframe id="myiframe"></iframe>
