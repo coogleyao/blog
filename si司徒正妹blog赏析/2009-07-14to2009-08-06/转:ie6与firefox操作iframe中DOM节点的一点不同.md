@@ -52,7 +52,7 @@
 </script>
 ```
 
-三段代码在firefox下面都是ok的,但是只有第三段在ie6下面能正常运行,前两段都会报参数无效的错误…… 这说明在ie6下只有使用iframe当前document生成的节点才能被append到DOM中,其他insertBfore..同理
+三段代码在firefox下面都是ok的,但是只有第三段在ie6下面能正常运行,前两段都会报参数无效的错误…… 这说明在ie6下只有使用iframe当前document生成的节点才能被append到DOM中,其他insertBefore..同理
 
 IE8已和其他游览器一致了！
 
