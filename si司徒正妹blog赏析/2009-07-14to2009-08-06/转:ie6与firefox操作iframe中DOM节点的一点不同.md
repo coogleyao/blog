@@ -4,21 +4,23 @@
 
 依次在两个浏览器中运行以下代码
 
-```javascript
+
 <html>
   <body>
     <iframe id="myiframe"></iframe>
   </body>
 </html>
 <script type="text/javascript">
+```javascript
   var doc = document.getElementById('myiframe').contentWindow.document;
   var textNode = document.createTextNode('yes~');
   doc.open();
   doc.write('<html><body></body></html>');
   doc.close();
   doc.body.appendChild(textNode);
-</script>
 ```
+</script>
+
 
 ```javascript
 <html>
