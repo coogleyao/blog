@@ -11,46 +11,44 @@
   </body>
 </html>
 <script type="text/javascript">
-  ```javadcript
-    var doc = document.getElementById('myiframe').contentWindow.document;
-    var textNode = document.createTextNode('yes~');
-    doc.open();
-    doc.write('<html><body></body></html>');
-    doc.close();
-    doc.body.appendChild(textNode);
-  ```
+  var doc = document.getElementById('myiframe').contentWindow.document;
+  var textNode = document.createTextNode('yes~');
+  doc.open();
+  doc.write('<html><body></body></html>');
+  doc.close();
+  doc.body.appendChild(textNode);
 </script>
 ```
 
 ```
 <html>
-	<body>
-		<iframe id="myiframe"></iframe>
-	</body>
+  <body>
+    <iframe id="myiframe"></iframe>
+  </body>
 </html>
 <script type="text/javascript">
-	var doc = document.getElementById('myiframe').contentWindow.document;
-	var textNode = doc.createTextNode('yes~');
-	doc.open();
-	doc.write('<html><body></body></html>');
-	doc.close();
-	doc.body.appendChild(textNode);
+  var doc = document.getElementById('myiframe').contentWindow.document;
+  var textNode = doc.createTextNode('yes~');
+  doc.open();
+  doc.write('<html><body></body></html>');
+  doc.close();
+  doc.body.appendChild(textNode);
 </script>
 ```
 
 ```
 <html>
-	<body>
-		<iframe id="myiframe"></iframe>
-	</body>
+<body>
+  <iframe id="myiframe"></iframe>
+</body>
 </html>
 <script type="text/javascript">
-	var doc = document.getElementById('myiframe').contentWindow.document;
-	doc.open();
-	doc.write('<html><body></body></html>');
-	doc.close();
-	var textNode = doc.createTextNode('yes~');
-	doc.body.appendChild(textNode);
+  var doc = document.getElementById('myiframe').contentWindow.document;
+  doc.open();
+  doc.write('<html><body></body></html>');
+  doc.close();
+  var textNode = doc.createTextNode('yes~');
+  doc.body.appendChild(textNode);
 </script>
 ```
 
