@@ -1,6 +1,6 @@
 # 转：ie6与firefox操作iframe中DOM节点的一点不同
 
-原地址：http://bluehua.org/2008/11/01/96.html(http://bluehua.org/2008/11/01/96.html)
+原地址：[http://bluehua.org/2008/11/01/96.html](http://bluehua.org/2008/11/01/96.html)
 
 依次在两个浏览器中运行以下代码
 
