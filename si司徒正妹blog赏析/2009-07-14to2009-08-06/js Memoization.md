@@ -45,3 +45,39 @@ var fib = {
  
 fib.fib_memo = Memoize('fib_memo', fib);
 ```
+
+________
+
+想一次缓存多个函数结果？也没问题!
+```javascript
+function Memoize(funcArr, obj){
+  var obj = obj || window,
+    cache = {};
+
+  return function(){
+    var key = Array.prototype.join.call(arguments, '_');
+    if (!(key in cache))
+      cache[key] = obj[arguments[0]].apply(obj, Array.prototype.slice.call(arguments, 1));
+
+    return cache[key];
+  }
+}
+var fib = {
+  fib: function(n){
+    if (n == 0 || n == 1)
+      return 1;
+    return this.fib(n-1) + this.fib(n-2);
+  },
+  fib_memo: function(n){
+    if (n == 0 || n == 1)
+      return 1;
+    return this.fib_memo(n-1) + this.fib_memo(n-2);
+  }
+}
+
+// 若要缓存，先这样调用
+fib = Memoize(['fib_memo', 'fib'], fib);
+
+// 然后这样使用
+fib('fib', 40)
+```
