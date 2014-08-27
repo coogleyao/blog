@@ -82,3 +82,4 @@ fib = Memoize(['fib_memo', 'fib'], fib);
 // 然后这样使用
 fib('fib', 40)
 ```
+[运行效果图点此](https://github.com/coogleyao/blog/issues/3)
