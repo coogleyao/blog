@@ -89,7 +89,7 @@ alert( user.getage());
 
 让这三个节点的Onclick事件都能正确的弹出相应的参数。
 
-1. 使用函数闭包
+1.使用函数闭包
 ```javascript
 var lists = document.getElementsByTagName("li");
 for(var i=0,l=lists.length; i < l; i++){
@@ -121,7 +121,7 @@ for(var i=0,l=lists.length; i < l; i++){
 }
 ```
 
-2. 利用事件代理
+2.利用事件代理
 ```javascript
 var ul = document.getElementsByTagName("ul")[0];
 ul.onclick = function(){
@@ -133,7 +133,7 @@ ul.onclick = function(){
 }
 ```
 
-3. 将暂时变量保留于元素节点上
+3.将暂时变量保留于元素节点上
 ```javascript
 var lists = document.getElementsByTagName("li");
 for(var i=0,t=0,el; el = list[i++];){
@@ -144,7 +144,7 @@ for(var i=0,t=0,el; el = list[i++];){
 }
 ```
 
-4. 使用with语句造成的对象闭包
+4.使用with语句造成的对象闭包
 ```javascript
 var els = document.getElementsByTagName("li");
 for(var i=0,n=els.length;i&lt;n;i++){
@@ -153,7 +153,7 @@ for(var i=0,n=els.length;i&lt;n;i++){
 }
 ```
 
-5. 使用try...catch语句构造的异常闭包
+5.使用try...catch语句构造的异常闭包
 ```javascript
 var lists = document.getElementsByTagName("li");
 for(var i=0,l=lists.length; i < l; i++){
@@ -167,7 +167,7 @@ for(var i=0,l=lists.length; i < l; i++){
 }
 ```
 
-6. 还是使用函数闭包，虽然看起来有点不一样
+6.还是使用函数闭包，虽然看起来有点不一样
 ```javascript
 var els = document.getElementsByTagName("li");
 (''+Array(els.length+1)).replace(/./g,function(a,i){
