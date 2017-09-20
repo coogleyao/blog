@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "bisheng": "^0.25.0"
+    "bisheng": "^0.25.0",
+    "rimraf": "^2.6.2"
   },
   "scripts": {
     "start": "bisheng start",
-    "build": "bisheng build --ssr"
+    "build": "npm run clean & bisheng build --ssr",
+    "clean": "rimraf _site"
   },
   "dependencies": {
     "bisheng-theme-one": "^0.2.20"
