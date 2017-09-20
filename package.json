@@ -1,0 +1,16 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "bisheng": "^0.25.0"
+  },
+  "scripts": {
+    "start": "bisheng start",
+    "build": "bisheng build --ssr"
+  },
+  "dependencies": {
+    "bisheng-theme-one": "^0.2.20"
+  }
+}

@@ -1,0 +1,1 @@
+webpackJsonp([1,3],{266:function(t,e){t.exports={content:["article",["p","NGINX \u5165\u95e8\u6307\u5357."],["hr"],["p",["a",{title:null,href:"http://wiki.jikexueyuan.com/project/nginx/"},"Nginx \u5165\u95e8\u6307\u5357"]]],meta:{title:"NGINX",publishDate:"2017-09-16T00:00:00.000Z",tags:["nginx","web"],filename:"posts/nginx.md"}}}});

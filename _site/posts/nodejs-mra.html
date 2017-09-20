@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/index.css"/>
+    <!--[if lt IE 10]>
+      <script src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,es5-shim/4.5.7/es5-shim.min.js,es5-shim/4.5.7/es5-sham.min.js,html5shiv/3.7.2/html5shiv.min.js,media-match/2.0.2/media.match.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="react-content"><div data-reactroot="" data-reactid="1" data-react-checksum="-315040251"><div class="header" data-reactid="2"><div class="container" data-reactid="3"><div class="brand" data-reactid="4"><a class="home" href="/" data-reactid="5">你可以点，但我不一定跳的首页链接。╮(￣▽￣)╭ </a></div></div></div><div class="document yue" data-reactid="6"><div class="hentry" data-reactid="7"><h1 class="entry-title" data-reactid="8">node.js 解析算法</h1><div class="entry-content" data-reactid="9"><article data-reactid="10"><p data-reactid="11"><a href="https://nodejs.org/api/modules.html#modules_all_together" data-reactid="12"><!-- react-text: 13 -->node.js module resolution algorithm<!-- /react-text --></a></p><hr data-reactid="14"/><p data-reactid="15"><!-- react-text: 16 -->To get the exact filename that will be loaded when require() is called, use the require.resolve() function.<!-- /react-text --></p><p data-reactid="17"><!-- react-text: 18 -->Putting together all of the above, here is the high-level algorithm in pseudocode of what require.resolve() does:<!-- /react-text --></p><pre class="language-null" data-reactid="19"><code data-reactid="20"><span class="token function">require</span><span class="token punctuation">(</span>X<span class="token punctuation">)</span> from module at path Y
+<span class="token number">1</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X is a core module<span class="token punctuation">,</span>
+   a<span class="token punctuation">.</span> return the core module
+   b<span class="token punctuation">.</span> STOP
+<span class="token number">2</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X begins <span class="token keyword">with</span> <span class="token string">'/'</span>
+   a<span class="token punctuation">.</span> set Y <span class="token keyword">to</span> be the filesystem root
+<span class="token number">3</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X begins <span class="token keyword">with</span> <span class="token string">'./'</span> <span class="token operator">or</span> <span class="token string">'/'</span> <span class="token operator">or</span> <span class="token string">'../'</span>
+   a<span class="token punctuation">.</span> <span class="token function">LOAD_AS_FILE</span><span class="token punctuation">(</span>Y <span class="token operator">+</span> X<span class="token punctuation">)</span>
+   b<span class="token punctuation">.</span> <span class="token function">LOAD_AS_DIRECTORY</span><span class="token punctuation">(</span>Y <span class="token operator">+</span> X<span class="token punctuation">)</span>
+<span class="token number">4</span><span class="token punctuation">.</span> <span class="token function">LOAD_NODE_MODULES</span><span class="token punctuation">(</span>X<span class="token punctuation">,</span> <span class="token function">dirname</span><span class="token punctuation">(</span>Y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">5</span><span class="token punctuation">.</span> THROW <span class="token string">"not found"</span>
+
+<span class="token function">LOAD_AS_FILE</span><span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+<span class="token number">1</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X is a file<span class="token punctuation">,</span> load X as JavaScript text<span class="token punctuation">.</span>  STOP
+<span class="token number">2</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X<span class="token punctuation">.</span>js is a file<span class="token punctuation">,</span> load X<span class="token punctuation">.</span>js as JavaScript text<span class="token punctuation">.</span>  STOP
+<span class="token number">3</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X<span class="token punctuation">.</span>json is a file<span class="token punctuation">,</span> parse X<span class="token punctuation">.</span>json <span class="token keyword">to</span> a JavaScript Object<span class="token punctuation">.</span>  STOP
+<span class="token number">4</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X<span class="token punctuation">.</span>node is a file<span class="token punctuation">,</span> load X<span class="token punctuation">.</span>node as binary addon<span class="token punctuation">.</span>  STOP
+
+<span class="token function">LOAD_INDEX</span><span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+<span class="token number">1</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X<span class="token operator">/</span>index<span class="token punctuation">.</span>js is a file<span class="token punctuation">,</span> load X<span class="token operator">/</span>index<span class="token punctuation">.</span>js as JavaScript text<span class="token punctuation">.</span>  STOP
+<span class="token number">2</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X<span class="token operator">/</span>index<span class="token punctuation">.</span>json is a file<span class="token punctuation">,</span> parse X<span class="token operator">/</span>index<span class="token punctuation">.</span>json <span class="token keyword">to</span> a JavaScript object<span class="token punctuation">.</span> STOP
+<span class="token number">3</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X<span class="token operator">/</span>index<span class="token punctuation">.</span>node is a file<span class="token punctuation">,</span> load X<span class="token operator">/</span>index<span class="token punctuation">.</span>node as binary addon<span class="token punctuation">.</span>  STOP
+
+<span class="token function">LOAD_AS_DIRECTORY</span><span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+<span class="token number">1</span><span class="token punctuation">.</span> <span class="token keyword">If</span> X<span class="token operator">/</span>package<span class="token punctuation">.</span>json is a file<span class="token punctuation">,</span>
+   a<span class="token punctuation">.</span> Parse X<span class="token operator">/</span>package<span class="token punctuation">.</span>json<span class="token punctuation">,</span> <span class="token operator">and</span> look <span class="token keyword">for</span> <span class="token string">"main"</span> field<span class="token punctuation">.</span>
+   b<span class="token punctuation">.</span> let M <span class="token operator">=</span> X <span class="token operator">+</span> <span class="token punctuation">(</span>json main field<span class="token punctuation">)</span>
+   c<span class="token punctuation">.</span> <span class="token function">LOAD_AS_FILE</span><span class="token punctuation">(</span>M<span class="token punctuation">)</span>
+   d<span class="token punctuation">.</span> <span class="token function">LOAD_INDEX</span><span class="token punctuation">(</span>M<span class="token punctuation">)</span>
+<span class="token number">2</span><span class="token punctuation">.</span> <span class="token function">LOAD_INDEX</span><span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+
+<span class="token function">LOAD_NODE_MODULES</span><span class="token punctuation">(</span>X<span class="token punctuation">,</span> START<span class="token punctuation">)</span>
+<span class="token number">1</span><span class="token punctuation">.</span> let DIRS<span class="token operator">=</span><span class="token function">NODE_MODULES_PATHS</span><span class="token punctuation">(</span>START<span class="token punctuation">)</span>
+<span class="token number">2</span><span class="token punctuation">.</span> <span class="token keyword">for</span> each DIR <span class="token keyword">in</span> DIRS<span class="token punctuation">:</span>
+   a<span class="token punctuation">.</span> <span class="token function">LOAD_AS_FILE</span><span class="token punctuation">(</span>DIR<span class="token operator">/</span>X<span class="token punctuation">)</span>
+   b<span class="token punctuation">.</span> <span class="token function">LOAD_AS_DIRECTORY</span><span class="token punctuation">(</span>DIR<span class="token operator">/</span>X<span class="token punctuation">)</span>
+
+<span class="token function">NODE_MODULES_PATHS</span><span class="token punctuation">(</span>START<span class="token punctuation">)</span>
+<span class="token number">1</span><span class="token punctuation">.</span> let PARTS <span class="token operator">=</span> path <span class="token function">split</span><span class="token punctuation">(</span>START<span class="token punctuation">)</span>
+<span class="token number">2</span><span class="token punctuation">.</span> let I <span class="token operator">=</span> count of PARTS <span class="token operator">-</span> <span class="token number">1</span>
+<span class="token number">3</span><span class="token punctuation">.</span> let DIRS <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token number">4</span><span class="token punctuation">.</span> <span class="token keyword">while</span> I <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+   a<span class="token punctuation">.</span> <span class="token keyword">if</span> PARTS<span class="token punctuation">[</span>I<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"node_modules"</span> CONTINUE
+   b<span class="token punctuation">.</span> DIR <span class="token operator">=</span> path <span class="token function">join</span><span class="token punctuation">(</span>PARTS<span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> I<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"node_modules"</span><span class="token punctuation">)</span>
+   c<span class="token punctuation">.</span> DIRS <span class="token operator">=</span> DIRS <span class="token operator">+</span> DIR
+   d<span class="token punctuation">.</span> let I <span class="token operator">=</span> I <span class="token operator">-</span> <span class="token number">1</span>
+<span class="token number">5</span><span class="token punctuation">.</span> return DIRS</code></pre></article></div><div class="entry-meta" data-reactid="21"><time class="updated" data-reactid="22">2017-09-16 </time><span data-reactid="23"><!-- react-text: 24 -->in <!-- /react-text --><span class="entry-tags" data-reactid="25"><a href="/tags#js" data-reactid="26">js</a><a href="/tags#node.js" data-reactid="27">node.js</a><a href="/tags#web" data-reactid="28">web</a></span></span></div></div></div><div class="footer" data-reactid="29"></div></div></div>
+  </body>
+  <script src="/common.js"></script>
+  <script src="/index.js"></script>
+</html>
